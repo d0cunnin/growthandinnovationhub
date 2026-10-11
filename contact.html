@@ -88,8 +88,9 @@
         <p class="lede">Choose the type of inquiry and share a few details. Fields marked with an asterisk are required.</p>
       </div>
       <div class="form-card">
-        <noscript><p class="form-status show info">This form needs JavaScript to submit. Please enable JavaScript, or check back once direct contact details are published.</p></noscript>
-        <form class="inquiry-form" id="contact-form" data-form-name="contact" novalidate>
+        
+        <form class="inquiry-form" id="contact-form" name="contact" data-form-name="contact" method="POST" data-netlify="true" netlify-honeypot="website">
+      <input type="hidden" name="form-name" value="contact">
       <p class="form-required-note"><span class="req" aria-hidden="true">*</span> Required field</p>
       <div class="form-error-summary" tabindex="-1" hidden></div>
       <div class="form-grid">

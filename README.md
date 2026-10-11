@@ -23,6 +23,7 @@ contact.html                       Contact & Engage (+ general inquiry form)
 privacy.html, terms.html           DRAFT legal pages (not indexed by search engines)
 404.html                           "Page not found" page
 robots.txt, sitemap.xml            Search-engine files (contain a placeholder domain)
+netlify.toml                       Netlify publish settings and security headers
 
 css/styles.css        Brand tokens (colors, fonts, spacing) and all components
 css/responsive.css    Phone and tablet refinements
@@ -113,13 +114,24 @@ window.GIH_EVENTS = [
 - Past events disappear automatically. A focus-area filter appears once events exist.
 - No registration link yet? Leave `registrationUrl: ""` and the event shows an "Express interest" button that goes to the contact form.
 
-## Configure the forms ⚠️ not yet connected
+## Configure the forms (Netlify Forms)
 
-There are two forms: the **training inquiry** (`organizational-services.html`) and the **general inquiry** (`contact.html`, with types: general, organizational training, entrepreneurship training, community partnership, speaking/workshop). Both validate required fields, show accessible error messages, and include a hidden spam trap.
+There are two forms: the **training inquiry** (`organizational-services.html`, Netlify form name `organizational-training`) and the **general inquiry** (`contact.html`, form name `contact`, with types: general, organizational training, entrepreneurship training, community partnership, speaking/workshop). Both validate required fields, show accessible error messages, and include a hidden spam trap.
 
-**Right now no delivery service is configured**, so after a visitor fills a form correctly they see: *"Online submission isn't available yet… your message has not been sent."* Nothing is stored, emailed or saved in the browser. The forms never claim success unless a service confirms receipt.
+The forms are set up for **Netlify Forms** (`provider: "netlify"` in `js/form-config.js`). They only work once the site is deployed on Netlify. Opened locally or on another host, a submission shows *"Your inquiry could not be sent"*; the forms never claim success unless Netlify confirms it received the inquiry.
 
-To connect them, edit **`js/form-config.js`** (one file controls both forms):
+**One-time setup in Netlify** (after the first deploy):
+
+1. In your site's dashboard, go to **Forms** and click **Enable form detection**.
+2. **Redeploy** the site (Deploys → Trigger deploy → Deploy site) so Netlify finds both forms. They then appear under Forms as `organizational-training` and `contact`.
+3. Go to **Site configuration → Forms → Form notifications → Add notification → Email notification**, enter the address that should receive inquiries, and choose *Any form*. Add a second notification if both founders should receive them.
+4. Send a test inquiry from each form on the live site and confirm the email arrives. Check the **Spam submissions** list in Netlify if one doesn't appear.
+
+Submissions are also kept in the Netlify dashboard (Forms), where you can read and export them. Check Netlify's current plan limits on monthly form submissions as inquiry volume grows.
+
+### Other options if the site ever leaves Netlify
+
+Edit **`js/form-config.js`** (one file controls both forms):
 
 **Option A — a form service** (Formspree, Basin, Getform, a Netlify/Vercel function, your own server):
 ```js
@@ -158,7 +170,7 @@ Read submissions in the Supabase dashboard (or build an authenticated admin page
 The site is ready for any static host. Pick one:
 
 - **GitHub Pages:** repository → Settings → Pages → Source: *Deploy from a branch* → `main` / root. The site appears at `https://<user>.github.io/growthandinnovationhub/`. Relative links mean it works in a subfolder.
-- **Netlify:** "Add new site" → import this GitHub repo → no build command, publish directory `/`.
+- **Netlify (chosen host — forms depend on it):** "Add new site" → "Import an existing project" → GitHub → `growthandinnovationhub`. `netlify.toml` already sets the publish folder and security headers, so leave the build command empty. Then do the form setup above. Every push to `main` redeploys automatically.
 - **Vercel:** "Add New Project" → import repo → Framework preset *Other*, no build command, output directory `/`.
 
 `404.html` is picked up automatically by GitHub Pages and Netlify.
@@ -166,7 +178,7 @@ The site is ready for any static host. Pick one:
 ### Before launch checklist
 
 1. **Domain:** every page, `sitemap.xml` and `robots.txt` use the placeholder `https://YOUR-DOMAIN.example`. Once the domain is confirmed, find-and-replace it across all files.
-2. **Forms:** connect a provider (above) and send a test inquiry from each form.
+2. **Forms:** enable form detection and email notifications in Netlify (above) and send a test inquiry from each form.
 3. **Placeholders:** replace every *Content pending* box (founder bios, mission story, email, social links). Search for `class="pending"` and `pending-inline`.
 4. **Legal pages:** `privacy.html` and `terms.html` are drafts. Have them reviewed, fill in the bracketed items, set the "Last updated" date, then remove `<meta name="robots" content="noindex">` from both.
 5. **Social image:** `assets/images/og-image.jpg` is a logo card; replace it with a custom image if you like.
@@ -178,7 +190,7 @@ The site is ready for any static host. Pick one:
 | All 10 requested pages + privacy, terms, 404 | ✅ Built, responsive, tested in Chromium at 320–1440px |
 | Navigation, Focus Areas dropdown, mobile menu (keyboard + screen reader) | ✅ |
 | Form interface, validation, honest status messages | ✅ |
-| Form delivery | ⚠️ Needs a provider in `js/form-config.js` |
+| Form delivery | ✅ Built for Netlify Forms; ⚠️ needs form detection + email notification turned on in Netlify |
 | Events system | ✅ Ready; no events listed yet (none have been announced) |
 | Founder biographies, mission story | ⚠️ Placeholders, awaiting approved text |
 | Contact email, phone, social links | ⚠️ Placeholders, not invented |
@@ -189,5 +201,6 @@ The site is ready for any static host. Pick one:
 
 ## Third-party services
 
+- **Netlify** hosts the site and processes form submissions (Netlify Forms). Named in the Privacy Policy.
 - **Google Fonts** (Playfair Display, Montserrat, Lato) loaded from fonts.googleapis.com. If unavailable, the site falls back to Georgia/Arial.
 - No analytics, trackers or cookies are included.

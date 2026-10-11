@@ -167,8 +167,9 @@
       <p class="lede">Tell us about your organization and what you&rsquo;re hoping to achieve. Fields marked with an asterisk are required.</p>
     </div>
     <div class="form-card">
-      <noscript><p class="form-status show info">This form needs JavaScript to submit. Please enable JavaScript, or check back once direct contact details are published.</p></noscript>
-      <form class="inquiry-form" id="org-inquiry-form" data-form-name="organizational-training" novalidate>
+      
+      <form class="inquiry-form" id="org-inquiry-form" name="organizational-training" data-form-name="organizational-training" method="POST" data-netlify="true" netlify-honeypot="website">
+      <input type="hidden" name="form-name" value="organizational-training">
       <p class="form-required-note"><span class="req" aria-hidden="true">*</span> Required field</p>
       <div class="form-error-summary" tabindex="-1" hidden></div>
       <div class="form-grid">
@@ -251,7 +252,7 @@
     </div>
     <div class="next-step">
       <h3 class="h4">What happens next</h3>
-      <p>Once online submissions are connected and your inquiry is received, the founders will review it and follow up by email to schedule a conversation about your goals, scope, and pricing.</p>
+      <p>Once your inquiry is received, the founders will review it and follow up by email to schedule a conversation about your goals, scope, and pricing.</p>
     </div>
   </div>
 </section>

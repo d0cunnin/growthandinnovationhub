@@ -63,6 +63,16 @@
   }
 
   function send(form, payload) {
+    if (cfg.provider === "netlify") {
+      // Netlify Forms: post the form's own fields (including the hidden
+      // form-name) URL-encoded to the site root. Netlify answers 2xx only when
+      // it has recorded the submission for a form it detected at deploy time.
+      return fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded", "Accept": "text/html" },
+        body: new URLSearchParams(new FormData(form)).toString()
+      });
+    }
     if (cfg.provider === "endpoint" && cfg.endpoint) {
       return fetch(cfg.endpoint, {
         method: "POST",
@@ -89,6 +99,7 @@
     var summary = form.querySelector(".form-error-summary");
     var button = form.querySelector('button[type="submit"]');
     var buttonHTML = button.innerHTML;
+    form.noValidate = true;   // use our accessible validation; browsers validate if JS is off
 
     // Pre-select inquiry type (?type=) and focus area (?focus=) from links.
     var type = params.get("type");

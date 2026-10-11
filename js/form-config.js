@@ -1,28 +1,32 @@
 /* ==========================================================================
    FORM SUBMISSION SETTINGS
    --------------------------------------------------------------------------
-   The inquiry forms do NOT send anything until one of the options below is
-   configured. Until then, visitors see an honest message that online
-   submission is not yet available, and nothing is stored or sent.
+   provider: "netlify"   (current) Netlify Forms. Works once the site is
+                         deployed on Netlify with form detection turned on.
+                         Submissions appear in the Netlify dashboard under
+                         Forms, and Netlify emails them to the address set in
+                         Forms > Form notifications. Nothing else to configure
+                         in this file. See README "Configure the forms".
 
-   Option A — a form-processing service (Formspree, Basin, Netlify Forms
-   function, your own server endpoint, etc.):
-       provider: "endpoint",
-       endpoint: "https://your-form-service.example/f/abc123"
-     The page POSTs JSON: { form, submittedAt, page, fields: {...} }.
-     The service must return a 2xx status on success.
+   Other options, if the site ever moves off Netlify:
 
-   Option B — Supabase (insert-only table protected by Row Level Security):
-       provider: "supabase",
-       supabaseUrl: "https://YOUR-PROJECT.supabase.co",
-       supabaseAnonKey: "PUBLIC-ANON-KEY",
-       supabaseTable: "inquiries"
-     Use ONLY the public "anon" key here. NEVER put a service-role key,
-     password, or private API key in this file — it is public.
-     See README "Configure the forms" for the table and RLS policy.
+   provider: "endpoint"  A form service (Formspree, Basin, your own server):
+                         set endpoint: "https://..." — the page POSTs JSON
+                         { form, submittedAt, page, fields } and treats a 2xx
+                         response as delivered.
+
+   provider: "supabase"  Insert-only Supabase table with Row Level Security;
+                         set supabaseUrl and the PUBLIC anon key.
+                         NEVER put a service-role key, password or private
+                         API key in this file — it is public.
+
+   provider: "none"      Forms validate but tell visitors that online
+                         submission is not available yet. Nothing is sent.
+
+   The forms never report success unless the service confirms receipt.
    ========================================================================== */
 window.GIH_FORM_CONFIG = {
-  provider: "none",          // "none" | "endpoint" | "supabase"
+  provider: "netlify",       // "netlify" | "endpoint" | "supabase" | "none"
   endpoint: "",
   supabaseUrl: "",
   supabaseAnonKey: "",
