@@ -1,0 +1,46 @@
+/* ==========================================================================
+   Growth and Innovation Hub — small-screen refinements
+   Component layouts are mobile-first in styles.css; this file holds the
+   adjustments that make phones and small tablets feel designed, not shrunk.
+   ========================================================================== */
+
+/* Phones */
+@media (max-width: 599px) {
+  .hero { padding-top: var(--space-8); }
+  .hero h1 { font-size: 2.3rem; }
+  .hero .btn-row .btn, .cta-band .btn-row .btn, .hero-btns .btn { width: 100%; }
+  .hero-visual { max-width: 380px; margin-top: var(--space-4); }
+  .portrait figcaption { font-size: 12px; padding: 8px 10px; left: 8px; right: 8px; bottom: 8px; }
+  .menu-toggle .menu-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .menu-toggle { padding: 10px 12px; }
+  .brand img { height: 42px; }
+  .focus-card { padding: var(--space-6); }
+  .focus-num { right: var(--space-6); }
+  .section-head { margin-bottom: var(--space-8); }
+  .info-card, .formats-panel, .aside-card, .pricing-note, .tagline-card { padding: var(--space-6); }
+  .entre-icon { width: 72px; height: 72px; border-radius: 20px; }
+  .entre-icon svg { width: 36px; height: 36px; }
+  .event { grid-template-columns: 72px 1fr; gap: var(--space-4); padding: var(--space-4); }
+  .event-filter, .event-filter select { width: 100%; min-width: 0; }
+  .related-card { grid-template-columns: 48px 1fr; padding: var(--space-4); }
+  .related-card > svg { display: none; }
+  .related-card .focus-icon { width: 48px; height: 48px; }
+  .footer-bottom { flex-direction: column; }
+  .pillars li { font-size: 12px; letter-spacing: .1em; }
+}
+
+/* Small tablets: give the founders' photos a side-by-side layout */
+@media (min-width: 560px) and (max-width: 819px) {
+  .founder-card { grid-template-columns: 200px 1fr; align-items: start; }
+}
+
+/* Tablets: hero stacks, keep the photo collage from getting too tall */
+@media (min-width: 600px) and (max-width: 899px) {
+  .hero-visual { max-width: 460px; }
+}
+
+/* Very small screens */
+@media (max-width: 359px) {
+  :root { --gutter: 12px; }
+  .brand img { height: 36px; }
+}

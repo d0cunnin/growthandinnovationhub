@@ -1,0 +1,5 @@
+# PLACEHOLDER DOMAIN in the Sitemap line: replace before launch (see README).
+User-agent: *
+Allow: /
+
+Sitemap: https://YOUR-DOMAIN.example/sitemap.xml

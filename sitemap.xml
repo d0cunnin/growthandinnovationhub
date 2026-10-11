@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PLACEHOLDER DOMAIN: replace https://YOUR-DOMAIN.example before launch (see README). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://YOUR-DOMAIN.example/</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/about.html</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/ai-education.html</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/organizational-preparedness.html</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/leadership-development.html</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/community-impact.html</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/entrepreneurship-development.html</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/organizational-services.html</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/training-events.html</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/contact.html</loc></url>
+</urlset>

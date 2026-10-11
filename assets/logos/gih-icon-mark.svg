@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200.0 200.0" width="200" height="200" role="img" aria-label="Growth and Innovation Hub"><title>Growth and Innovation Hub</title><defs><linearGradient id="ilightt" x1="0" y1="1" x2="1" y2="0">
+<stop offset="0" stop-color="#0F7A7A"/><stop offset="1" stop-color="#8AA89A"/></linearGradient></defs>
+<path d="M30.5 140 A86 86 0 0 1 150 30" fill="none" stroke="#D4A049" stroke-width="5" stroke-linecap="round"/>
+<path fill="#0D2B45" d="M24 112 C46 118 78 138 100 178 C66 182 34 160 24 112 Z"/>
+<circle cx="52" cy="92" r="12.5" fill="#0D2B45"/>
+<circle cx="90" cy="64" r="13.5" fill="#D4A049"/>
+<path fill="#D4A049" d="M66 86 C98 92 122 126 104 176 C92 140 80 114 66 86 Z"/>
+<circle cx="140" cy="52" r="12.5" fill="#0D2B45"/>
+<path fill="#0D2B45" d="M108 172 C106 122 128 88 168 70 C170 118 148 154 108 172 Z"/>
+<path fill="url(#ilightt)" d="M96 182 C132 184 166 162 178 116 C146 126 116 148 96 182 Z"/></svg>
